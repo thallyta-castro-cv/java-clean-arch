@@ -1,10 +1,9 @@
-package com.thallyta.user.clean.architecture.user.infra.gateway;
+package com.thallyta.user.clean.architecture.user.infra.gateway.user;
 
-
-import com.thallyta.user.clean.architecture.user.application.gateway.UserRepository;
+import com.thallyta.user.clean.architecture.user.application.gateway.user.UserRepository;
 import com.thallyta.user.clean.architecture.user.domain.entities.user.User;
-import com.thallyta.user.clean.architecture.user.infra.persistence.RepositoryUser;
-import com.thallyta.user.clean.architecture.user.infra.persistence.UserEntity;
+import com.thallyta.user.clean.architecture.user.infra.persistence.user.RepositoryUser;
+import com.thallyta.user.clean.architecture.user.infra.persistence.user.UserEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;

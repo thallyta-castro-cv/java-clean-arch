@@ -1,4 +1,4 @@
-package com.thallyta.user.clean.architecture.user.infra.controller.dto;
+package com.thallyta.user.clean.architecture.user.infra.controller.user;
 
 import java.time.LocalDate;
 

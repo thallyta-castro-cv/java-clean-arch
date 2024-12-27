@@ -1,4 +1,4 @@
-package com.thallyta.user.clean.architecture.user.application.gateway;
+package com.thallyta.user.clean.architecture.user.application.gateway.user;
 
 import com.thallyta.user.clean.architecture.user.domain.entities.user.User;
 

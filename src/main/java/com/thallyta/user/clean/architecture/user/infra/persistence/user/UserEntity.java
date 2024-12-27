@@ -1,4 +1,4 @@
-package com.thallyta.user.clean.architecture.user.infra.persistence;
+package com.thallyta.user.clean.architecture.user.infra.persistence.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

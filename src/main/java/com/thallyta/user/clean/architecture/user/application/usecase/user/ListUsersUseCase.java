@@ -1,6 +1,6 @@
-package com.thallyta.user.clean.architecture.user.application.usecase;
+package com.thallyta.user.clean.architecture.user.application.usecase.user;
 
-import com.thallyta.user.clean.architecture.user.application.gateway.UserRepository;
+import com.thallyta.user.clean.architecture.user.application.gateway.user.UserRepository;
 import com.thallyta.user.clean.architecture.user.domain.entities.user.User;
 
 import java.util.List;

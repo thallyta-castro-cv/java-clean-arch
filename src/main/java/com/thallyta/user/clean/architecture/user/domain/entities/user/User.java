@@ -17,9 +17,6 @@ public class User {
     private Address address;
 
     public User(String cpf, String name, LocalDate bornDate, String email) {
-
-
-
         this.cpf = cpf;
         this.name = name;
         this.bornDate = bornDate;
