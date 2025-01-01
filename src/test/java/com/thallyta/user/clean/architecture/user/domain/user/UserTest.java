@@ -1,6 +1,6 @@
-package com.thallyta.user.clean.architecture.user.domain.entities.user;
+package com.thallyta.user.clean.architecture.user.domain.user;
 
-import com.thallyta.user.clean.architecture.user.domain.Address;
+import com.thallyta.user.clean.architecture.user.domain.address.Address;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

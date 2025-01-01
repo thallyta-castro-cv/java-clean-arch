@@ -2,7 +2,7 @@ package com.thallyta.user.clean.architecture.user.infra.controller.user;
 
 import com.thallyta.user.clean.architecture.user.application.usecase.user.CreateUserUseCase;
 import com.thallyta.user.clean.architecture.user.application.usecase.user.ListUsersUseCase;
-import com.thallyta.user.clean.architecture.user.domain.entities.user.User;
+import com.thallyta.user.clean.architecture.user.domain.user.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

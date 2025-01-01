@@ -1,10 +1,8 @@
 package com.thallyta.user.clean.architecture.user.infra.gateway.user;
 
-import com.thallyta.user.clean.architecture.user.domain.entities.user.User;
+import com.thallyta.user.clean.architecture.user.domain.user.User;
 import com.thallyta.user.clean.architecture.user.infra.persistence.user.UserEntity;
-import org.springframework.stereotype.Component;
 
-@Component
 public class UserEntityMapper {
 
     public UserEntity toEntity(User user) {

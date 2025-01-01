@@ -1,6 +1,6 @@
-package com.thallyta.user.clean.architecture.user.domain.entities.user;
+package com.thallyta.user.clean.architecture.user.domain.user;
 
-import com.thallyta.user.clean.architecture.user.domain.Address;
+import com.thallyta.user.clean.architecture.user.domain.address.Address;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 public class User {
 
+    private Long id;
     private String cpf;
     private String name;
     private LocalDate bornDate;
@@ -21,5 +22,9 @@ public class User {
         this.name = name;
         this.bornDate = bornDate;
         this.email = email;
+    }
+
+    public User(Long id){
+        this.id = id;
     }
 }
