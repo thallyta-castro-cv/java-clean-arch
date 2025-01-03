@@ -23,7 +23,9 @@ public class UserController {
     @GetMapping
     public List<UserDTO> listUsers(){
         return listUsersUseCase.listAllUsers().stream()
-                .map(user -> new UserDTO(user.getCpf(),
+                .map(user -> new UserDTO(
+                        user.getId(),
+                        user.getCpf(),
                         user.getName(),
                         user.getBornDate(),
                         user.getEmail()))
@@ -33,10 +35,11 @@ public class UserController {
 
     @PostMapping
     public UserDTO createUser(@RequestBody UserDTO userDTO) {
-       User userSave = createUserUseCase.createUser(new User(userDTO.cpf(),
+       User userSave = createUserUseCase.createUser(new User(userDTO.id(), userDTO.cpf(),
                userDTO.name(), userDTO.bornDate(), userDTO.email()));
 
-       return new UserDTO(userSave.getCpf(),
+       return new UserDTO(userSave.getId(),
+                          userSave.getCpf(),
                           userSave.getName(),
                           userSave.getBornDate(),
                           userSave.getEmail());

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public class UserBuilder {
 
+    private Long id;
     private String cpf;
     private String name;
     private LocalDate born;
@@ -25,7 +26,7 @@ public class UserBuilder {
     }
 
     public User build() {
-        User user = new User(cpf, name, born, "");
+        User user = new User(id, cpf, name, born, "");
         user.setAddress(address);
         return user;
     }

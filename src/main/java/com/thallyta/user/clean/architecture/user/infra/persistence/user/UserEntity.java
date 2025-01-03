@@ -22,7 +22,8 @@ public class UserEntity {
 
     public UserEntity() {}
 
-    public UserEntity(String cpf, String name, LocalDate bornDate, String email) {
+    public UserEntity(Long id, String cpf, String name, LocalDate bornDate, String email) {
+        this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.bornDate = bornDate;

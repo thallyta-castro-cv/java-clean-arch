@@ -17,7 +17,8 @@ public class User {
     private String email;
     private Address address;
 
-    public User(String cpf, String name, LocalDate bornDate, String email) {
+    public User(Long id, String cpf, String name, LocalDate bornDate, String email) {
+        this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.bornDate = bornDate;
