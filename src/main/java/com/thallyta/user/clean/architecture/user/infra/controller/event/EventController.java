@@ -72,14 +72,27 @@ public class EventController {
     }
 
     @PostMapping("/{eventId}/type-tickets")
-    public ResponseEntity<Void> createTypeTickets(@PathVariable Long eventId, @RequestBody @Valid List<TypeTicketDTO> typeTicketDTOs) {
+    public ResponseEntity<List<TypeTicketDTO>> createTypeTickets(
+            @PathVariable Long eventId,
+            @RequestBody @Valid List<TypeTicketDTO> typeTicketDTOs) {
+
         List<TypeTicket> typeTickets = typeTicketDTOs.stream()
                 .map(this::convertToEntity)
                 .collect(Collectors.toList());
 
         createTypeTicketUseCase.saveTypeTickets(eventId, typeTickets);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        List<TypeTicketDTO> responseDTOs = typeTickets.stream()
+                .map(typeTicket -> new TypeTicketDTO(
+                        typeTicket.getSector(),
+                        typeTicket.getDefinition(),
+                        typeTicket.getValue(),
+                        typeTicket.getEventId(),
+                        typeTicket.getTotalAvailable()
+                ))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTOs);
     }
 
     private TypeTicket convertToEntity(TypeTicketDTO typeTicketDTO) {
