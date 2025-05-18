@@ -92,24 +92,24 @@ classDiagram
 
 ### Descrição das Camadas do Projeto
 
-#### 1. Application  
-Essa camada concentra os casos de uso e interfaces que permitem que os dados transitem entre as camadas sem depender de implementações concretas.  
-- **gateway**: Interface que define os contratos para operações de persistência relacionadas às entidades do domínio.  
-- **usecase**: Casos de uso para as entidades. 
+#### 1. Application
+Essa camada concentra os casos de uso e interfaces que permitem que os dados transitem entre as camadas sem depender de implementações concretas.
+- **gateway**: Interface que define os contratos para operações de persistência relacionadas às entidades do domínio.
+- **usecase**: Casos de uso para as entidades.
 
-#### 2. Config  
-Camada responsável pelos arquivos de configuração do projeto, como beans do Spring ou outras dependências.  
-- **Config**: Arquivos gerais de configuração da aplicação.  
+#### 2. Config
+Camada responsável pelos arquivos de configuração do projeto, como beans do Spring ou outras dependências.
+- **Config**: Arquivos gerais de configuração da aplicação.
 
-#### 3. Domain  
-Camada onde estão as entidades do domínio e regras de negócio puras.  
-- **domain**: Classes que representam as entidades principais do domínio.  
+#### 3. Domain
+Camada onde estão as entidades do domínio e regras de negócio puras.
+- **domain**: Classes que representam as entidades principais do domínio.
 
-#### 4. Infra  
-Camada responsável pelas interações externas, como frameworks e bibliotecas.  
-- **controller**: Controladores REST para exposição de endpoints relacionados às entidades.  
-- **gateway**: Mappers para conversão entre objetos de entidades e DTOs e implementações concretas do repositório usando JPA.  
-- **persistence**: Interfaces que representam as operações no banco de dados e Classes que representam as entidades no banco de dados.  
+#### 4. Infra
+Camada responsável pelas interações externas, como frameworks e bibliotecas.
+- **controller**: Controladores REST para exposição de endpoints relacionados às entidades.
+- **gateway**: Mappers para conversão entre objetos de entidades e DTOs e implementações concretas do repositório usando JPA.
+- **persistence**: Interfaces que representam as operações no banco de dados e Classes que representam as entidades no banco de dados.
 
 
 ## Configuração do Ambiente
