@@ -1,77 +1,116 @@
-# Projeto: Cadastro de Usuários com Arquitetura Limpa
+# Projeto: Site de venda de ingressos com Arquitetura Limpa
 
 Este projeto implementa um sistema de cadastro de usuários utilizando os princípios da **Arquitetura Limpa** (Clean Architecture).
 O objetivo é organizar o código de forma que seja independente de frameworks, fácil de manter e de escalar, promovendo a separação de responsabilidades entre as camadas.
 
-## Estrutura do Projeto
-A estrutura do projeto segue o modelo exibido no diagrama abaixo:
+## Diagrama de classes
+
+```mermaid
+classDiagram
+    class Event {
+        - category: Category
+        - address: Address
+        - date: Date
+        - typeTicket: List~TypeTicket~
+        + method(): Type
+    }
+
+    class TypeTicket {
+        - event: Event
+        - sector: Sector
+        - definition: Definition
+        - value: Double
+        - totalAvailable: int
+        + method(): Type
+    }
+
+    class Ticket {
+        - code: String
+        - typeTicket: TypeTicket
+        + method(): Type
+    }
+
+    class User {
+        - cpf: String
+        - name: String
+        - bornDate: Date
+        - email: String
+        - address: Address
+        + method(): Type
+    }
+
+    class Sale {
+        - user: User
+        - tickets: List~Ticket~
+        + method(): Type
+    }
+
+    class Address {
+        - cep: String
+        - number: Integer
+        - complement: String
+        + Address(String, Integer, String)
+    }
+
+    class Definition {
+        <<enumeration>>
+        INTEIRA
+        ESTUDANTE
+        IDOSO
+        PCD
+        MEIA
+        OUTROS
+    }
+
+    class Sector {
+        <<enumeration>>
+        PISTA
+        PISTA_PREMIUM
+        CADEIRA
+        CAMAROTE
+    }
+
+    class Category {
+        <<enumeration>>
+        FESTIVAL
+        MUSICA
+        TEATRO
+        OUTROS
+    }
+
+    Event --> TypeTicket
+    TypeTicket --> Ticket
+    Ticket --> Sale
+    Sale --> User
+    Event --> Address
+    User --> Address
+    Event --> Category
+    TypeTicket --> Sector
+    TypeTicket --> Definition
 
 ```
-|-- application
-|   |-- gateway
-|   |   \-- UserRepository
-|   |-- usecase
-|       |-- CreateUserUseCase
-|       \-- ListUsersUseCase
-|-- config
-|   \-- UserConfig
-|-- domain
-|   \-- entities.user
-|       |-- User
-|       |-- UserBuilder
-|       \-- Address
-|-- infra
-|   |-- controller
-|   |   \-- dto
-|   |       \-- UserController
-|   |-- gateway
-|   |   |-- UserEntityMapper
-|   |   \-- UserRepositoryJpa
-|   \-- persistence
-|       |-- RepositoryUser
-|       \-- UserEntity
-\-- UserApplication
-```
 
-### Descrição das Camadas
+### Descrição das Camadas do Projeto
 
-#### **1. Application**
+#### 1. Application
 Essa camada concentra os casos de uso e interfaces que permitem que os dados transitem entre as camadas sem depender de implementações concretas.
+- **gateway**: Interface que define os contratos para operações de persistência relacionadas às entidades do domínio.
+- **usecase**: Casos de uso para as entidades.
 
-- **gateway/UserRepository**: Interface que define os contratos para operações de persistência relacionadas ao usuário.
-- **usecase/CreateUserUseCase**: Caso de uso para criar novos usuários.
-- **usecase/ListUsersUseCase**: Caso de uso para listar os usuários registrados.
+#### 2. Config
+Camada responsável pelos arquivos de configuração do projeto, como beans do Spring ou outras dependências.
+- **Config**: Arquivos gerais de configuração da aplicação.
 
-#### **2. Config**
-- **UserConfig**: Arquivos de configuração do projeto, como beans do Spring ou outras dependências.
-
-#### **3. Domain**
+#### 3. Domain
 Camada onde estão as entidades do domínio e regras de negócio puras.
+- **domain**: Classes que representam as entidades principais do domínio.
 
-- **entities.user/User**: Classe que representa a entidade Usuário.
-- **entities.user/UserBuilder**: Classe Builder para criar objetos do tipo Usuário.
-- **entities.user/Address**: Classe que representa o endereço do usuário.
-
-#### **4. Infra**
+#### 4. Infra
 Camada responsável pelas interações externas, como frameworks e bibliotecas.
+- **controller**: Controladores REST para exposição de endpoints relacionados às entidades.
+- **gateway**: Mappers para conversão entre objetos de entidades e DTOs e implementações concretas do repositório usando JPA.
+- **persistence**: Interfaces que representam as operações no banco de dados e Classes que representam as entidades no banco de dados.
 
-- **controller/dto/UserController**: Controlador REST para exposição de endpoints relacionados aos usuários.
-- **gateway/UserEntityMapper**: Mapper para conversão entre objetos de entidades e DTOs.
-- **gateway/UserRepositoryJpa**: Implementação concreta do repositório usando JPA.
-- **persistence/RepositoryUser**: Interface que representa as operações no banco de dados.
-- **persistence/UserEntity**: Classe que representa a entidade Usuário no banco de dados.
-
-#### **5. UserApplication**
-Classe principal para inicializar a aplicação.
-
----
-
-## Tecnologias Utilizadas
-- **Java**
-- **Spring Boot**
-- **Spring Data JPA**
-- **Postgres SQL**
-- **Maven**
 
 ## Configuração do Ambiente
 1. Clone o repositório:
@@ -109,4 +148,3 @@ Esta documentação serve como referência para o uso e manutenção do projeto.
 - **Thallyta Castro**  
   [LinkedIn](https://www.linkedin.com/in/thallyta-castro)  
   [GitHub](https://github.com/thallyta)
-
