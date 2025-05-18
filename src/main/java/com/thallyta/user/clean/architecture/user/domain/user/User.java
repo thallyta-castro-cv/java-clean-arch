@@ -28,4 +28,11 @@ public class User {
     public User(Long id){
         this.id = id;
     }
+
+    public User(String name, String cpf, LocalDate bornDate, String email) {
+        this.name = name;
+        this.cpf = cpf;
+        this.bornDate = bornDate;
+        this.email = email;
+    }
 }
